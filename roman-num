@@ -1,21 +1,42 @@
 
 //https://www.codewars.com/kata/roman-numerals-decoder/train/cpp
+
 #include <iostream>
 #include <string>
 
 using namespace std;
 
 int solution(string roman) {
+  
+  while (size_t pos = roman.find("IV")){
+   roman.replace(pos, 2, "IIII");
+  }
+  while (size_t pos = roman.find("IX")){
+   roman.replace(pos, 2, "VIIII");
+  }
+  while (size_t pos = roman.find("XL")){
+   roman.replace(pos, 2, "XXXX");
+  }
+  while (size_t pos = roman.find("XC")){
+   roman.replace(pos, 2, "LXXXX");
+  }
+  while (size_t pos = roman.find("CD")){
+   roman.replace(pos, 2, "CCCC");
+  }
+  while (size_t pos = roman.find("CM")){
+   roman.replace(pos, 2, "DCCCC");
+  }
+ 
  int rez = 0;
- for (auto char : roman){  
-    switch (char){
-      case "I": rez+=1; break;
-      case "V": rez+=5; break;
-      case "X": rez+=10; break;
-      case "L": rez+=50; break;
-      case "C": rez+=100; break;
-      case "D": rez+=500; break;
-      case "M": rez+=1000; break;
+ for (auto romanChar : roman){  
+    switch (romanChar){
+      case 'I': rez+=1; break;
+      case 'V': rez+=5; break;
+      case 'X': rez+=10; break;
+      case 'L': rez+=50; break;
+      case 'C': rez+=100; break;
+      case 'D': rez+=500; break;
+      case 'M': rez+=1000; break;
       default: rez+=0; break; // WTF?!
     }
   }
