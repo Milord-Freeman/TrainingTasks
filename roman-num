@@ -1,0 +1,44 @@
+
+//https://www.codewars.com/kata/roman-numerals-decoder/train/cpp
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int solution(string roman) {
+  
+  int lengthOfString = roman.length(); // At the sample MMMXXIIV
+  vector<int> firstStringInDec(lengthOfString);
+  
+  for (int i = 0; i<lengthOfString; i++){  // firstStringInDec = 1k, 1k, 1k, 10, 10, 1, 1, 5
+    switch (roman[i]){
+      case "I": firstStringInDec.push_back(1); break;
+      case "V": firstStringInDec.push_back(5); break;
+      case "X": firstStringInDec.push_back(10); break;
+      case "L": firstStringInDec.push_back(50); break;
+      case "C": firstStringInDec.push_back(100); break;
+      case "D": firstStringInDec.push_back(500); break;
+      case "M": firstStringInDec.push_back(1000); break;
+      default: firstStringInDec.push_back(0); break; // WTF?!
+    }
+  }
+  
+  vector<int> secondStringWithoutRepeats;
+  int typeOfSymbol = 0, amountOfSymbol=0;
+  
+  
+  
+  
+  return 0;
+}
+
+
+Symbol    Value
+I          1
+V          5
+X          10
+L          50
+C          100
+D          500
+M          1,000
