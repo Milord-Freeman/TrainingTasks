@@ -1,6 +1,5 @@
 
 //https://www.codewars.com/kata/roman-numerals-decoder/train/cpp
-
 #include <iostream>
 #include <string>
 
@@ -24,9 +23,19 @@ int solution(string roman) {
     }
   }
   
-  vector<int> secondStringWithoutRepeats;
+  vector<int> secondStringWithoutRepeats; // After translating it should be (3k, 20, 2, 5)
   int typeOfSymbol = 0, amountOfSymbol=0;
+  for (int i = 0; i<lengthOfString; i+=amountOfSymbol){
+    amountOfSymbol = 1;
+    typeOfSymbol = firstStringInDec[i];
+    while (firstStringInDec[i] == firstStringInDec[i+amountOfSymbol]){
+      amountOfSymbol++;
+    }
+    secondStringWithoutRepeats.push_back(typeOfSymbol*amountOfSymbol);
+  }
   
+  
+      
   
   
   
