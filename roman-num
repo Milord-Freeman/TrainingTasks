@@ -6,48 +6,18 @@
 using namespace std;
 
 int solution(string roman) {
-  
-  int lengthOfString = roman.length(); // At the sample MMMXXIIV
-  vector<int> firstStringInDec(lengthOfString);
-  
-  for (int i = 0; i<lengthOfString; i++){  // firstStringInDec = 1k, 1k, 1k, 10, 10, 1, 1, 5
-    switch (roman[i]){
-      case "I": firstStringInDec.push_back(1); break;
-      case "V": firstStringInDec.push_back(5); break;
-      case "X": firstStringInDec.push_back(10); break;
-      case "L": firstStringInDec.push_back(50); break;
-      case "C": firstStringInDec.push_back(100); break;
-      case "D": firstStringInDec.push_back(500); break;
-      case "M": firstStringInDec.push_back(1000); break;
-      default: firstStringInDec.push_back(0); break; // WTF?!
+ int rez = 0;
+ for (auto char : roman){  
+    switch (char){
+      case "I": rez+=1; break;
+      case "V": rez+=5; break;
+      case "X": rez+=10; break;
+      case "L": rez+=50; break;
+      case "C": rez+=100; break;
+      case "D": rez+=500; break;
+      case "M": rez+=1000; break;
+      default: rez+=0; break; // WTF?!
     }
   }
-  
-  vector<int> secondStringWithoutRepeats; // After translating it should be (3k, 20, 2, 5)
-  int typeOfSymbol = 0, amountOfSymbol=0;
-  for (int i = 0; i<lengthOfString; i+=amountOfSymbol){
-    amountOfSymbol = 1;
-    typeOfSymbol = firstStringInDec[i];
-    while (firstStringInDec[i] == firstStringInDec[i+amountOfSymbol]){
-      amountOfSymbol++;
-    }
-    secondStringWithoutRepeats.push_back(typeOfSymbol*amountOfSymbol);
-  }
-  
-  
-      
-  
-  
-  
-  return 0;
+  return rez;
 }
-
-
-Symbol    Value
-I          1
-V          5
-X          10
-L          50
-C          100
-D          500
-M          1,000
