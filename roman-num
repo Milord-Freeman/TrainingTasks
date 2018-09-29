@@ -1,44 +1,39 @@
 
 //https://www.codewars.com/kata/roman-numerals-decoder/train/cpp
-
 #include <iostream>
 #include <string>
 
 using namespace std;
 
+string myReplace(string& sourceString,
+    				 const string& toReplace,
+    				 const string& replaceWith){
+    
+    size_t position = sourceString.find(toReplace);
+    if (position == string::npos) return sourceString;
+    else return sourceString.replace(position, toReplace.length(), replaceWith);
+}
+
 int solution(string roman) {
+  myReplace(roman, "IV", "IIII");
+  myReplace(roman, "IX", "VIIII");
+  myReplace(roman, "XL", "XXXX");
+  myReplace(roman, "XC", "LXXXX");
+  myReplace(roman, "CD", "CCCC");
+  myReplace(roman, "CM", "DCCCC");
   
-  while (size_t pos = roman.find("IV")){
-   roman.replace(pos, 2, "IIII");
-  }
-  while (size_t pos = roman.find("IX")){
-   roman.replace(pos, 2, "VIIII");
-  }
-  while (size_t pos = roman.find("XL")){
-   roman.replace(pos, 2, "XXXX");
-  }
-  while (size_t pos = roman.find("XC")){
-   roman.replace(pos, 2, "LXXXX");
-  }
-  while (size_t pos = roman.find("CD")){
-   roman.replace(pos, 2, "CCCC");
-  }
-  while (size_t pos = roman.find("CM")){
-   roman.replace(pos, 2, "DCCCC");
-  }
- 
- int rez = 0;
+  int result = 0;
  for (auto romanChar : roman){  
     switch (romanChar){
-      case 'I': rez+=1; break;
-      case 'V': rez+=5; break;
-      case 'X': rez+=10; break;
-      case 'L': rez+=50; break;
-      case 'C': rez+=100; break;
-      case 'D': rez+=500; break;
-      case 'M': rez+=1000; break;
-      default: rez+=0; break; // WTF?!
+      case 'I': result+=1; break;
+      case 'V': result+=5; break;
+      case 'X': result+=10; break;
+      case 'L': result+=50; break;
+      case 'C': result+=100; break;
+      case 'D': result+=500; break;
+      case 'M': result+=1000; break;
+      default: result+=0; break; // WTF?!
     }
   }
-  return rez;
+  return result;
 }
