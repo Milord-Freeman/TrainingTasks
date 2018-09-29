@@ -6,8 +6,8 @@
 using namespace std;
 
 string myReplace(string& sourceString,
-    				 const string& toReplace,
-    				 const string& replaceWith){
+    		     const string& toReplace,
+    			 const string& replaceWith){
     
     size_t position = sourceString.find(toReplace);
     if (position == string::npos) return sourceString;
