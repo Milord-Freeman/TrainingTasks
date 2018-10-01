@@ -1,5 +1,4 @@
 //https://www.codewars.com/kata/roman-numerals-encoder/train/cpp
-
 #include <map>
 #include <string>
 
@@ -21,8 +20,8 @@ string solution(int number){
                                   {1000, "M"}};
   string result = "";
 
-  for (auto num = decToRoman.end(); (num != decToRoman.begin()) and (number >0); num--){
-    while (number > (*num).first){
+  for (auto num = decToRoman.rbegin(); (num != decToRoman.rend()) and (number > 0); num++){
+    while (number >= (*num).first){
       number-=(*num).first;
       result+=(*num).second;
     }
