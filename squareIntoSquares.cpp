@@ -8,16 +8,20 @@ class Decomp
 {
   public:
   static std::vector<long long> decompose(long long n);
+  static bool isSquare(long long number);
+  static long long recursivelyDecompose(long long n);
 };
 
-Decomp::decompose(long long n){
-  long long squareOfN = pow(n, 2);
-  vector<int> result;
-  while (squareOfN){
-    for (long i = n; i > 0; i--){
-      
-  
+vector<long long> Decomp::decompose(long long n){
+  vector<long long> result;
+  //TODO: some code here
+  return result; 
 }
+
+bool Decomp::isSquare(long long number){
+  if (pow(trunc(sqrt(number)), 2) == number) return true; else return false;
+}
+
 
 testing(50, {1,3,5,8,49});
         testing(44, {2,3,5,7,43});
