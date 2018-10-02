@@ -7,22 +7,31 @@ using namespace std;
 class Decomp
 {
   public:
-  static std::vector<long long> decompose(long long n);
+  static vector<long long> decompose(long long n);
   static bool isSquare(long long number);
-  static long long recursivelyDecompose(long long n);
+  static vector<long long> recDecompose(long long difference, long long prevSquare);
 };
 
 vector<long long> Decomp::decompose(long long n){
+  vector<long long> resultVector = recDecompose(pow(n, 2)-pow(n-1, 2), n);
+  return resultVector;
+}
+
+vector<long long> Decomp::recDecompose(long long difference, long long prevSquare){
   vector<long long> result;
-  //TODO: some code here
+  if (isSquare(difference)){
+    result.push_back(sqrt(difference));
+    return result;
+  }
+  else {
+    for (long long i = prevSquare - 1; i > 0; i--){
+      result = recDecompose(difference - pow(i, 2), i);
+      if (!result.empty()) return result;
+    }
+  }
   return result; 
 }
 
 bool Decomp::isSquare(long long number){
   if (pow(trunc(sqrt(number)), 2) == number) return true; else return false;
 }
-
-
-testing(50, {1,3,5,8,49});
-        testing(44, {2,3,5,7,43});
-        testing(2, {});
