@@ -13,7 +13,7 @@ class Decomp
 };
 
 vector<long long> Decomp::decompose(long long number){
-  vector<long long> resultVector;
+  vector<long long> resultVector = {};
   long long squaredNumber = pow(number, 2);
   while (resultVector.empty() and number>0) {
     number--;
@@ -40,15 +40,9 @@ vector<long long> Decomp::recDecompose(long long difference, long long prevSquar
       }
     }
   }
-  return result; 
+  return {}; 
 }
 
 bool Decomp::isSquare(long long number){
   if (pow(trunc(sqrt(number)), 2) == number) return true; else return false;
-}
-
-}
-
-bool Decomp::isSquare(long long number){
-  if ((number > 0) and (pow(trunc(sqrt(number)), 2) == number)) return true; else return false;
 }
