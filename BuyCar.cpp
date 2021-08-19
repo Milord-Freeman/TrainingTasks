@@ -1,5 +1,6 @@
-
 // https://www.codewars.com/kata/buying-a-car/cpp
+
+#include <vector>
 
 class BuyCar
 {

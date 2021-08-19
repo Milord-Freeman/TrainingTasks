@@ -1,5 +1,4 @@
-
-https://www.codewars.com/kata/sum-of-digits-slash-digital-root/train/cpp
+//https://www.codewars.com/kata/sum-of-digits-slash-digital-root/train/cpp
 
 bool isSingleDigit(int n){
   int integralPart = n/10;

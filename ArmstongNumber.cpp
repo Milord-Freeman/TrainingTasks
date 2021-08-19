@@ -1,5 +1,7 @@
 //https://www.codewars.com/kata/5287e858c6b5a9678200083c/cpp/
 
+#include <vector>
+
 int powerTo(int base, int power){
   if (power>1) return (base * powerTo(base, power-1)); else if (power==0) return 1; else return base;
 }
