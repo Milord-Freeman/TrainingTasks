@@ -4,5 +4,5 @@
 
 std::string uint32_to_ip(const uint32_t ip)
 {
-	return std::to_string((ip & 0xFF000000) >> 24) + "." + std::to_string((ip & 0xFF0000) >> 16) + "." + std::to_string((ip & 0xFF00) >> 8) + "." + std::to_string(ip & 0xFF);
+	return std::to_string((ip >> 24) & 0xFF) + "." + std::to_string((ip >> 16) & 0xFF) + "." + std::to_string((ip >> 8) & 0xFF) + "." + std::to_string(ip & 0xFF);
 }
