@@ -3,7 +3,7 @@
 
 class Solution {
 public:
-    string mergeAlternately(const string& word1, const string& word2) {
+    string mergeAlternately(std::string_view word1, std::string_view word2) {
         const int word1Length = word1.length();
         const int word2Length = word2.length();
         const int maxLenght = std::max(word1Length, word2Length);
