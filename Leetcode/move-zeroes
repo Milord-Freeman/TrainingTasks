@@ -39,3 +39,13 @@ public:
         }
     }
 };
+
+// Another STL solutuin oneliner:
+
+class Solution {
+public:
+    void moveZeroes(std::vector<int>& nums) {
+        std::stable_partition(nums.begin(), nums.end(),
+                              [](int& num) -> bool { return num; });
+    }
+};
