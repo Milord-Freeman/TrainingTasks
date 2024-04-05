@@ -1,0 +1,41 @@
+
+// https://leetcode.com/problems/move-zeroes/
+
+// This problem generally has a normal solution with O(n), 
+// but for some reason the first thing that came to my mind 
+// was an absurdly slow solution based on bubble sort with 
+// complexity O(n^2), and when I realized its absurdity, 
+// I laughed and decided to save it for the story.
+
+// Normal one:
+
+class Solution {
+public:
+    void moveZeroes(std::vector<int>& nums) {
+        auto zero = nums.begin();
+        for (auto current = zero; current != nums.end(); current++) {
+            if (*current != 0) {
+                *zero = *current;
+                zero++;
+            }
+        }
+        for (auto current = zero; current != nums.end(); current++) {
+            *current = 0;
+        }
+    }
+};
+
+// Meet the hero:
+
+class Solution {
+public:
+    void moveZeroes(std::vector<int>& nums) {
+        for (auto current = nums.rbegin(); current != nums.rend(); current++){
+            if (*current == 0){
+                for (auto next = current.base(), zero = next - 1; next != nums.end(); next++, zero++){
+                    std::swap(*zero, *next);
+                }
+            }
+        }
+    }
+};
