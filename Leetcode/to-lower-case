@@ -1,0 +1,29 @@
+
+// https://leetcode.com/problems/to-lower-case
+
+class Solution {
+public:
+     string toLowerCase(string& str) {
+        transform(str.begin(), str.end(), str.begin(), ::tolower);
+        return s;
+    }
+};
+
+// Or without transform:
+
+class Solution {
+public:
+    string toLowerCase(string& str) {
+        for (auto&& ch : str){
+            if (std::isupper(ch)){
+                ch = std::tolower(ch);
+            }
+        }
+        return str;
+    }
+};
+
+// I know that the main idea of this problem is that in ASCII table 
+// upper- and lower-case characters are located exactly 32 positions apart from each other, 
+// but in reality this solution does not take into account the existence of national tables, 
+// and also does not work with Unicode. Therefore, it makes more sense to use library functions.
