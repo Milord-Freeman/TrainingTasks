@@ -29,3 +29,38 @@ public:
         return res;
     };
 };
+
+// But for the sake of history I’ll leave the classic solution with a stack
+
+class Solution {
+public:
+    int calPoints(vector<string>& operations) {
+        std::stack<int> st;
+        for (auto&& ops : operations) {
+            if (ops == "+") {
+                int first = st.top();
+                st.pop();
+                int second = st.top();
+                st.pop();
+
+                st.push(second);
+                st.push(first);
+                st.push(first + second);
+            } else if (ops == "D") {
+                st.push(st.top() * 2);
+            } else if (ops == "C") {                
+                st.pop();
+            } else {
+                st.push(std::stoi(ops));
+            };
+        };
+
+        int res = 0;
+        while (!st.empty()){
+            res += st.top();
+            st.pop();
+        }
+
+        return res;
+    };
+};
