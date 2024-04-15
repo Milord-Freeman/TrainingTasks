@@ -17,7 +17,7 @@ public:
         using enum direction;
         direction move = Right;
 
-        while (!((result.size() >= maxSize) || (border.left > border.right) && (border.up > border.down))) {
+        while (((result.size() < maxSize) || (border.left <= border.right) && (border.up <= border.down))) {
             switch (move) {
             case Right:
                 for (int i = border.left; i <= border.right; i++) {
