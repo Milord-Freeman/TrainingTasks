@@ -18,11 +18,8 @@ public:
         direction move = Right;
 
         while (!((result.size() >= maxSize) || (border.left > border.right) && (border.up > border.down))) {
-            std::cout << border.left << ", " << border.right << ", "
-                      << border.up << ", " << border.down << " | ";
             switch (move) {
             case Right:
-                std::cout << " Right ";
                 for (int i = border.left; i <= border.right; i++) {
                     result.push_back(matrix[border.up][i]);
                 }
@@ -30,7 +27,6 @@ public:
                 move = Down;
                 break;
             case Down:
-                std::cout << " Down ";
                 for (int i = border.up; i <= border.down; i++) {
                     result.push_back(matrix[i][border.right]);
                 }
@@ -38,7 +34,6 @@ public:
                 move = Left;
                 break;
             case Left:
-                std::cout << " Left ";
                 for (int i = border.right; i >= border.left; i--) {
                     result.push_back(matrix[border.down][i]);
                 }
@@ -46,7 +41,6 @@ public:
                 move = Up;
                 break;
             case Up:
-                std::cout << " Up ";
                 for (int i = border.down; i >= border.up; i--) {
                     result.push_back(matrix[i][border.left]);
                 }
