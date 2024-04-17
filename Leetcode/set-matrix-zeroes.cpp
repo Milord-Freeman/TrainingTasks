@@ -34,3 +34,32 @@ public:
     }
 };
 
+// And here is the “correct solution” using a constant space.
+
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        bool zeroFirstCol = false;
+        for (int row = 0; row < matrix.size(); row++) {
+            if (matrix[row][0] == 0)
+                zeroFirstCol = true;
+            for (int col = 1; col < matrix.at(row).size(); col++) {
+                if (matrix[row][col] == 0) {
+                    matrix[row][0] = 0;
+                    matrix[0][col] = 0;
+                }
+            }
+        }
+
+        for (int row = matrix.size() - 1; row >= 0; row--) {
+            for (int col = matrix.at(0).size() - 1; col >= 1; col--) {
+                if (matrix[row][0] == 0 || matrix[0][col] == 0) {
+                    matrix[row][col] = 0;
+                }
+            }
+            if (zeroFirstCol)
+                matrix[row][0] = 0;
+        }
+    }
+};
+
