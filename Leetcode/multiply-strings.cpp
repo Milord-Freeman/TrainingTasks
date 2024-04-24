@@ -26,7 +26,7 @@ public:
         for (auto num : vecMin) {
             std::cout << num;
         }
-        std::cout << " = ";
+        // std::cout << " = ";
 
         // int buffer = 0;
         std::vector<std::vector<int>> matrix(vecMin.size(),
@@ -41,31 +41,50 @@ public:
                 matrix[vecMin.size() - 1 - minIndex][maxIndex] = d.rem;
             }
         }
-
-        for (auto row : matrix) {
-            for (auto col : row) {
-                std::cout << col;
+        // hotfix
+        for (int i = 0; i < matrix.size(); i++) {
+            for (int j = 0; j < i; j++) {
+                matrix[i].push_back(0);
             }
-            std::cout << " + ";
         }
+        // second hotfix
+        for (int i = 0; i < matrix.size(); i++) {
+            std::reverse(matrix[i].begin(),
+                         matrix[i].end()); // God, forgive me.
+        }
+
+        // for (auto row : matrix) {
+        //     for (auto col : row) {
+        //         std::cout << col;
+        //     }
+        //     std::cout << " + ";
+        // }
+
         std::vector<int> result;
         result.reserve(vecMax.size() + vecMin.size());
-
         int buffer = 0;
-        for (int j = 0; j < 1; j++) {
-            for (int i = 0; i <= matrix.size() - 1; i++) {
-                buffer += matrix[i][j];
+
+        for (int j = 0; j < matrix[matrix.size() - 1].size(); j++) {
+            for (int i = 0; i < matrix.size(); i++) {
+                if (j < matrix[i].size()) {
+                    buffer += matrix[i][j];
+                    // cout << j << " ";
+                }
             }
             auto d = std::div(buffer, 10);
-            result[i] = d.rem;
+            result.push_back(d.rem);
             buffer = d.quot;
         }
+
         std::cout << " = ";
         for (auto i : result) {
             std::cout << i;
         }
-
-        std::string res(result.rbegin(), result.rend());
+        std::reverse(result.begin(), result.end());
+        std::string res;
+        for (int i : result) {
+            res += std::to_string(i);
+        }
         return res;
     }
 };
